@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>react_双向绑定</title>
+	<script type="text/javascript" src="bower_components/react/react.min.js"></script>
+	<script type="text/javascript" src="bower_components/react/react-dom.min.js"></script>
+	<script type="text/javascript" src="bower_components/babel/browser.min.js"></script>
+</head>
+<body>
+	<div id="app"></div>
+	<script type="text/babel">
+		class InputChange extends React.Component{
+		constructor(){
+			super()
+			this.state = {
+				msg:''
+			}
+		}
+		change(){
+			this.setState({
+				msg:this.refs['input'].value
+			})
+		}
+		render(){
+			return (<div>
+						<input type="text" onChange={this.change.bind(this)} ref="input"/>
+						<div>{this.state.msg}</div>
+					</div>)
+		}
+	}
+		ReactDOM.render(<InputChange/>,app)
+	</script>
+</body>
+</html>

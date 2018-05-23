@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>React表单方法与前后台数据交互_1</title>
+	<script type="text/javascript" src="bower_components/react/react.min.js"></script>
+	<script type="text/javascript" src="bower_components/react/react-dom.min.js"></script>
+	<script type="text/javascript" src="bower_components/babel/browser.min.js"></script>
+</head>
+<body>
+	<div id="app"></div>
+	<script type="text/babel">
+		class Interact extends React.Component{
+			constructor(){
+				super()
+				this.state={
+					arr:[]
+			}
+		}
+			componentWillMount(){
+				this.ajaxToData()
+		}
+			ajaxToData(){
+				let oAjax = new XMLHttpRequest()
+				oAjax.open('GET','http://localhost:2831/get',true)
+				oAjax.send()
+				oAjax.onload = function(){
+					if(oAjax.status == 200){
+						let json = eval('('+oAjax.responseText+')')
+						this.setState({
+							arr:json
+					})
+				}
+			}.bind(this)
+		}
+			render(){
+				let arrLi = []
+				this.state.arr.forEach(function(val,index){
+					arrLi.push(<li key={index}>{val}</li>)
+			})
+				return(<div>
+							<ul>
+								{arrLi}
+							</ul>				
+						</div>) 
+		}
+	}
+		ReactDOM.render(<Interact/>,app)
+	</script>
+</body>
+</html>

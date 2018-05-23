@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="bower_components/vue/dist/vue.min.js"></script>
+	<script src="bower_components/vue-resource/dist/vue-resource.min.js"></script>
+</head>
+<body>
+	<label>用户名：</label><input type="text" v-model='user'>
+	<label>密码：</label><input type="text" v-model='pass'>
+	<input type="button" value="提交" @click='ajax'>
+	<script>
+		new Vue({
+			el: 'body',
+			data: {
+				user: '',
+				pass: '',
+			},
+			methods: {
+				ajax: function(){
+					this.$http.post('http://localhost:2133/postInfo',{
+						user: this.user,
+						pass: this.pass
+					},{
+						emulateJSON:true
+					}).then(function(responseText){
+						//console.log(responseText); 
+						if(responseText.data.ok == 0){
+							alert(responseText.data.msg);
+						}else if(responseText.data.ok == 1){
+							alert(responseText.data.msg);
+						}
+					},function(){
+						alert('大失败~！');
+					})
+				}
+			}
+		})
+	</script>
+</body>
+</html>

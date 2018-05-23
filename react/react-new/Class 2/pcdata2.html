@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>父子组件练习：子向父传递数据</title>
+	<script type="text/javascript" src="bower_components/react/react.min.js"></script>
+	<script type="text/javascript" src="bower_components/react/react-dom.min.js"></script>
+	<script type="text/javascript" src="bower_components/babel/browser.min.js"></script>
+</head>
+<body>
+	<div id="app"></div>
+	<script type="text/babel">
+		class Child extends React.Component{
+			constructor(){
+				super()
+				this.state={
+					msg:'我是子组件自己的数据~'
+				}
+			}
+			componentWillMount(){
+				this.props.sendMsg(this.state.msg)
+			}
+			render(){
+				return (<div>
+							<div>我是子组件：{this.state.msg}</div>
+						</div>)
+			}
+		}
+		class Parent extends React.Component{
+			constructor(){
+				super()
+				this.state={
+					msg:'我是父组件自己的数据~'
+				}
+			}
+			parShow(e){
+				this.setState({
+					msg:e
+				})
+			}
+			render(){
+				return (<div>
+							<div>我是父组件： {this.state.msg}</div>
+							<Child sendMsg={this.parShow.bind(this)}/>
+						</div>)
+			}
+		}
+
+		ReactDOM.render(<Parent/>,app)
+	</script>
+</body>
+</html>

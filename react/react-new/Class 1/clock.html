@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>react_3:时钟练习</title>
+	<script type="text/javascript" src="bower_components/react/react.min.js"></script>
+	<script type="text/javascript" src="bower_components/react/react-dom.min.js"></script>
+	<script type="text/javascript" src="bower_components/babel/browser.min.js"></script>
+</head>
+<body>
+	<div id="app"></div>
+	<script type="text/babel">
+		class Clock extends React.Component{
+			constructor(){
+				super()
+				this.state = {
+					time: new Date()
+			}
+				setInterval(()=>{
+					this.setState({
+						time: new Date()
+				})
+			},1000)
+		}
+			render(){
+				return (<div>{this.state.time.toLocaleDateString()} {this.state.time.toLocaleTimeString()}</div>)
+		}
+	}
+		ReactDOM.render(<Clock/>,app)
+	</script>
+</body>
+</html>

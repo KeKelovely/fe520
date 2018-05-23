@@ -1,0 +1,21 @@
+module.exports={
+	entry:'./index.js',
+	output:{
+		filename:'bundle.js'
+	},
+	devServer:{
+		port:1289,
+		open:true
+	},
+	module:{
+		rules:[{
+			test:/\.css$/,
+			use:['style-loader','css-loader']
+		},
+		{
+			test:/\.js$/,
+			use:['react-hot-loader','babel-loader'],
+			exclude:/node_modules/
+		}]
+	}
+}

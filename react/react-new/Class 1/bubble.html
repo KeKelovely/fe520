@@ -1,0 +1,48 @@
+</head>
+<body>
+	<div id="app"></div>
+	<script type="text/babel">
+		class Bubble extends React.Component{
+			constructor(){
+				super()
+				this.state={
+					msg:'hello, react!'
+			}
+		}
+			componentWillMount(){
+				console.log('组件挂载前！')
+		}
+			componentDidMount(){
+				console.log('组件挂载后')
+		}
+			componentWillUpdate(){
+				console.log('组件更新前')
+		}
+			componentDidUpdate(){
+				console.log('组件更新后')
+		}
+			componentWillUnmount(){
+				console.log('组件卸载之前')
+		}
+			show(e){
+				this.setState({
+					msg:Math.random()
+			})
+			// 阻止事件冒泡
+			e.nativeEvent.stopImmediatePropagation()
+		}
+			render(){
+				return (<div>
+							<input type="button" value="点击" onClick={this.show.bind(this)}/>
+							<div id="div1">{this.state.msg}</div>
+						</div>)
+		}
+	}
+		ReactDOM.render(<Bubble/>,app)
+	// 定义外部事件
+		document.onclick = function(){
+			ReactDOM.render(<h1>bilibili~~</h1>,app)
+	}
+	</script>
+</body>
+</html>

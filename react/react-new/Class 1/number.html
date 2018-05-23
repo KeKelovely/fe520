@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>reace_3:加减数字计算器</title>
+	<script type="text/javascript" src="bower_components/react/react.min.js"></script>
+	<script type="text/javascript" src="bower_components/react/react-dom.min.js"></script>
+	<script type="text/javascript" src="bower_components/babel/browser.min.js"></script>
+	<style>
+		body{
+			text-align: center;
+		}
+		div{
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<div id="app"></div>
+	<script type="text/babel">
+		class Counter extends React.Component{
+			constructor(){
+				super()
+				this.state = {
+					number:1
+			}
+		}
+			last(){
+				this.setState({
+					number: this.state.number == this.props.min?Number(this.props.min):(this.state.number-1)
+			})
+		}
+			next(){
+				this.setState({
+					number: this.state.number == this.props.max?Number(this.props.max):(this.state.number+1)
+			})
+		}
+			render(){
+				return (<div>
+							<input type="button" value="-" onClick={this.last.bind(this)}/>
+							<div>{this.state.number}</div>
+							<input type="button" value="+" onClick={this.next.bind(this)}/>
+						</div>)
+		}
+	}
+		ReactDOM.render(<Counter min='0' max='15'/>,app)
+	</script>
+</body>
+</html>

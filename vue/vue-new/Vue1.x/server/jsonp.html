@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="bower_components/vue/dist/vue.min.js"></script>
+	<script src="bower_components/vue-resource/dist/vue-resource.min.js"></script>
+</head>
+<body>
+	<label>请输入查询的内容：</label><input type="text" v-model='wd'>
+	<input type="button" value="点此查询" @click='query'>
+	<ul id="ul"  v-for='i in arr'>
+		<li>{{i}}</li>
+	</ul>
+</body>
+	<script>
+		new Vue({
+			el: 'body',
+			data: {
+				wd: '',
+				arr: [],
+			},
+			methods: {
+				query: function(){
+					this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",{
+						wd: this.wd
+					},{
+						jsonp: 'cb' // 此处jsonp属性的值应为对应API接口上的callback函数query上的键
+					}).then(function(json){
+						//console.log(json.data.s);
+						for(var i in json.data.s){
+							this.arr.push(json.data.s[i]);
+						}
+					},function(){
+						console.log('error!');
+					})
+				}
+			}
+		})
+	</script>
+	<!--<script src="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=1&cb=handle"></script>-->
+</html>

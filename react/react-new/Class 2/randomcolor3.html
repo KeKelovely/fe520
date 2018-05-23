@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>父子组件练习：随机颜色</title>
+	<script type="text/javascript" src="bower_components/react/react.min.js"></script>
+	<script type="text/javascript" src="bower_components/react/react-dom.min.js"></script>
+	<script type="text/javascript" src="bower_components/babel/browser.min.js"></script>
+</head>
+<body>
+	<div id="app"></div>
+	<script type="text/babel">
+	class Child extends React.Component{
+		render(){
+			return (<div style={{color:this.props.textColor}}>我是子组件</div>)
+		}
+	}
+
+	class Parent extends React.Component{
+		render(){
+			let arr = []
+			for (let i = 0; i < 10; i++){
+				arr.push(<Child key={i} textColor={'rgb('+parseInt(Math.random()*256)+','+
+				parseInt(Math.random()*256)+','+parseInt(Math.random()*256)+')'}/>)
+			}
+			return (<div>
+						<div>我是父组件</div>
+						{arr}
+					</div>)
+		}
+	};
+	ReactDOM.render(<Parent/>,app);
+	</script>
+</body>
+</html>
