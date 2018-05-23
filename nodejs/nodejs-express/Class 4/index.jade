@@ -1,0 +1,34 @@
+doctype
+html
+	head
+		meta(charset='utf-8')
+		title=titlename
+		style.
+			ul,ol{width:100%;float:left}
+			ul li{float:left;margin:20px;list-style:none}
+			.d{display:none;}
+		body
+			ul
+				-var arr = ['用户','列表','新闻'],link = ['user','list','news']
+				-for(var i in arr)
+					li
+						a(href="http://localhost:2138/"+link[i])=arr[i]
+			ol
+				-for(var i in DataArr)
+					li=DataArr[i]
+			ul
+				-if(page == 0)
+					li.d
+						a(href="javascript:;")
+				-else
+					li
+						a(href="http://localhost:2138/"+linkNode+"?page="+(page=0?0:(page-1)))上一页
+				-for(var i = 0; i < maxL; i++)
+					li
+						a(href="http://localhost:2138/"+linkNode+"?page="+i)=i+1
+				-if(page == maxL-2)
+					li.d
+						a(href="javascript:;")
+				-else
+					li
+						a(href="http://localhost:2138/"+linkNode+"?page="+((page=maxL-1)?(maxL-1):(page+1)))下一页

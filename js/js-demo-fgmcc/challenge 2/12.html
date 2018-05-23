@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复选框全选/反选</title>
+<style>
+	body,dl,dt,dd,p{margin:0;padding:0;}
+	body{font-family:Tahoma;font-size:12px;}
+	label,input,a{vertical-align:middle;}
+	label{padding:0 10px 0 5px;}
+	a{color:#09f;text-decoration:none;}
+	a:hover{color:red;}
+	dl{width:120px;margin:10px auto;padding:10px 5px;border:1px solid #666;border-radius:5px;background:#fafafa;}
+	dt{padding-bottom:10px;border-bottom:1px solid #666;}
+	dt label{font-weight:700;}
+	p{margin-top:10px;}
+</style>
+<script>
+	window.onload = function(){
+		var oCheckAll = document.getElementById("checkAll");
+		var oInput = document.getElementById("inputItem").getElementsByTagName("input");
+		var oLabel = document.getElementsByTagName("label")[0];
+		var oA = document.getElementsByTagName("a")[0];
+		// 全选/全不选
+		var selectAll = function(){
+			for (var i in oInput){
+				oInput[i].checked = oCheckAll.checked;
+			}
+			oLabel.innerHTML = oCheckAll.checked ? "全不选":"全选";
+		}
+		oCheckAll.onclick = function(){
+			selectAll();
+		}
+		// 反选
+		oA.onclick = function(){
+			oCheckAll.checked = oCheckAll.checked == true ? false:true;
+			selectAll();
+		}
+	}
+</script>
+</head>
+<body>
+		<dl>
+	    <dt><input type="checkbox" id="checkAll" /><label>全选</label><a href="javascript:;">反选</a></dt>
+	    <dd id="inputItem">
+	        <p><input type="checkbox" name="item" /><label>选项（一）</label></p>
+	        <p><input type="checkbox" name="item" /><label>选项（二）</label></p>
+	        <p><input type="checkbox" name="item" /><label>选项（三）</label></p>
+	        <p><input type="checkbox" name="item" /><label>选项（四）</label></p>
+	        <p><input type="checkbox" name="item" /><label>选项（五）</label></p>
+	        <p><input type="checkbox" name="item" /><label>选项（六）</label></p>
+	        <p><input type="checkbox" name="item" /><label>选项（七）</label></p>
+	        <p><input type="checkbox" name="item" /><label>选项（八）</label></p>
+	        <p><input type="checkbox" name="item" /><label>选项（九）</label></p>
+	        <p><input type="checkbox" name="item" /><label>选项（十）</label></p>
+	    </dd>    
+	</dl>
+	<center>1、切换全选/全不选文字；2、根据选中个数更新全选框状态；</center>
+</body>
+</html>

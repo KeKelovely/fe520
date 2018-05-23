@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>控制DIV属性</title>
+	</head>
+	<style>
+		#outer{
+			width: 500px;
+			margin: 0 auto;
+			padding: 0;
+			text-align: center;
+		}	
+		#div1{
+			width: 100px;
+			height: 100px;
+			background: #000;
+			margin: 10px auto;
+			display: block;
+		}
+	</style>
+	<body>
+		<div id="outer">
+			<input type="button" value="变宽">
+			<input type="button" value="变高">
+			<input type="button" value="变色">
+			<input type="button" value="隐藏">
+			<input type="button" value="重置">
+			<div id="div1"></div>
+		</div>
+		<script>
+			// changeStyle用来封装修改div块设定的函数
+			var changeStyle = function(ele,attr,val){
+				// 访问style对象的属性，属性访问和键访问均可~
+				ele.style[attr] = val;
+			}
+			window.onload = function(){
+				var Btn = document.getElementsByTagName("input"),
+					Div = document.getElementById("div1"),
+					Att = ["width","height","background","display","display"],
+					Val = ["200px","200px","red","none","block"];
+
+					for (var i = 0; i < Btn.length; i++){
+						Btn[i].index = i;
+						Btn[i].onclick = function(){
+							if (this.index == Btn.length - 1){
+								Div.style.cssText = "";
+							}
+							changeStyle(Div,Att[this.index],Val[this.index]);
+						}
+					}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>输入法</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			font-size: 14px;
+		}
+		ul{
+			list-style: none;
+		}
+		button{
+			cursor: pointer;
+		}
+		#outer{
+			width: 100px;
+			margin: 10px auto;
+			text-align: center;
+		}
+		#ime{
+			margin-top: 5px;
+			background: #fff;
+			border: 1px solid #9a99ff;
+			display: none;
+		}
+		#ime li{
+			width: 100%;
+			line-height: 24px;
+		}
+		#close{
+			border-top: 1px solid #9a99ff;
+		}
+		#ime li a{
+			color: #00c00c;
+			padding: 0 5px;
+			display: block;
+			text-decoration: none;
+		}
+		#ime li a:hover{
+			background: #d9e1f6;
+			transition: .7s;
+		}
+	</style>
+</head>
+<body>
+	<div id="outer">
+		<button>输入法</button>
+		<ul id="ime">
+			<li><a href="javascript:;">手写</a></li>
+			<li><a href="javascript:;">拼音</a></li>
+			<li id="close"><a href="javascript:;">关闭</a></li>
+		</ul>
+	</div>
+	<script>
+		window.onload = function(){
+			var btn = document.getElementsByTagName("button")[0],
+				ime = document.getElementById("ime"),
+				close = document.getElementById("close");
+			btn.onclick = function(){
+				ime.style.display = ime.style.display == "block"?"none":"block";
+			}
+			close.onclick = function(){
+				ime.style.display = "none";
+			}
+		}
+	</script>
+</body>
+</html>

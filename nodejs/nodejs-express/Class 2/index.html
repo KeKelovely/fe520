@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外面的主页面</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+	</style>
+	<script src="./ajax.js"></script>
+</head>
+<body>
+	<span id="sp"></span>
+	<div id="div">
+		用户：<input type="text" id="user"><br>
+		密码：<input type="text" id="pass"><br>
+		<button id="btn">登录</button>
+		<input type="checkbox" id="c">自动登录
+	</div>
+	<script>
+		ajax({
+			url:'http://localhost:2731/leo',
+			type:'get',
+			success:function(data){
+				var data = eval('('+data+')');
+				user.value = data.user;
+				pass.value = data.pass;
+
+				setTimeout(function(){
+					ajax({
+						url:'http://localhost:2731/login',
+						type:'get',
+						data:{
+							user:user.value,
+							pass:pass.value
+						},
+						success:function(data){
+							alert(data);
+							if(data == 'ok!'){
+								var oDiv = document.getElementById("div"),
+									oSpan = document.getElementById("sp");
+								oDiv.style.display = "none";
+								oSpan.style.display = "block";
+								oSpan.innerHTML = "欢迎您！" + user.value;
+							}
+						}
+					});
+				},1000);
+			}
+		});
+	</script>
+</body>
+</html>

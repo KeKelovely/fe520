@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>输入两个数字，比较大小</title>
+	<style>
+		body{text-align:center;}
+		button{margin-right:5px;}
+	</style>
+</head>
+<body>
+	<input type="text" id='num1'> vs
+	<input type="text" id='num2'>
+	<button id='btn'>最大的数是-></button><span id='result'></span>
+	<script>
+		window.onload = function(){
+			var oBtn = document.getElementById("btn");
+			oBtn.onclick = function(){
+				var num1 = document.getElementById("num1").value;
+				var num2 = document.getElementById("num2").value;
+				//console.log(num1,num2);
+				var res = num1 > num2 ? (num1):(num2);
+				//console.log(res);
+				result.innerText = res;
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	</style>
+</head>
+<body>
+	<input type="file" id="file">
+	<button id='tj'>提交文件</button>
+	<img src="" id='v'>
+	<script>
+		tj.onclick = function(){
+			var oForm = new FormData();
+			oForm.append('files',file.files[0]);
+			var xhr = new XMLHttpRequest();
+			xhr.open('post','http://localhost:2313/setFiles',true);
+			xhr.onload = function(){
+				v.src = xhr.responseText.substring(3);
+			};
+			xhr.upload.onprogress = function(e){
+				ld.style.width = parseInt(e.loaded/e.total*100)+'%';
+			};
+			xhr.send(oForm);
+		}
+	</script>
+</body>
+</html>

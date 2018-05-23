@@ -1,0 +1,14 @@
+doctype
+html
+	head
+		meta(charset='utf-8')
+		title
+		style.
+			span{float:right}
+			ol li{float:left;margin:20px;list-style:none}
+	body
+		ul
+			-for(var i in arr)
+				li
+					a(href="http://localhost:3263/news?id="+arr[i].ID)=arr[i].textName
+					span=arr[i].time

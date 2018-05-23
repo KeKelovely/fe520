@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数接收参数并弹出</title>
+</head>
+<style>
+	body{
+		font-size: 16px;
+		text-align: center;
+	}
+	input{
+		border: 1px solid #ccc;
+		padding: 3px;
+	}
+	button{
+		cursor: pointer;
+	}
+</style>
+<body>
+	<p><input type="text" value="北京市"></p>
+	<p><input type="text" value="朝阳区"></p>
+	<p><button>传参</button></p>
+
+	<script>
+		var CallBackf = function(a,b){
+			alert(a);
+			alert(b);
+		};
+		window.onload = function(){
+			var input = document.getElementsByTagName("input"),
+				btn = document.getElementsByTagName("button")[0];
+			btn.onclick = function(){
+				CallBackf(input[0].value,input[1].value);
+			}
+		};
+	</script>
+</body>
+</html>

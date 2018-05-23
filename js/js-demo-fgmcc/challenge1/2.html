@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>网页换肤</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				height: 100%;
+				background: ;
+			}
+			body{
+				font: 14px Tahoma;
+				background: #a3c5a8;
+			}
+			.green{
+				background: #a3c5a8;
+				font: 14px Tahoma;
+			}
+			.black{
+				background: #ccc;
+				font: 14px Tahoma;
+			}
+			.red{
+				background: #fdd;
+				font: 14px Tahoma;
+			}
+			li{
+				list-style: none;
+			}
+			a:link, a:visited{
+				text-decoration: none;
+			}
+			a:hover{
+				text-decoration: underline;
+			}
+			#outer{
+				width: 500px;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			#skin,#nav{
+				overflow: hidden;
+			}
+			#skin{
+				margin: 10px 0;
+			}
+			#skin li{
+				float: left;
+				width: 15px;
+				height: 15px;
+				cursor: pointer;
+				overflow: hidden;
+				margin-right: 15px;
+				text-indent: -9999px;
+				border: 4px solid;
+			}
+			#red{
+				border-color: red;
+				background: red;
+			}
+			#green{
+				border-color: green;
+				background: green;
+			}
+			#black{
+				border-color: black;
+				background: black;
+			}
+			#nav{
+				background: green;
+				border: 1px solid #fff;
+			}
+			#nav li{
+				float: left;
+				width: 82px;
+				line-height: 25px;
+				text-align: center;
+				border-right: 1px solid #fff;
+			}
+			#nav li:last-child{
+				width: 83px;
+				border-right: 0px;
+			}
+			#nav li a{
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="outer">
+			<ul id="skin">
+				<li id="red" title="red">red</li>
+				<li id="green" title="green">green</li>
+				<li id="black" title="black">black</li>
+			</ul>
+			<ul id="nav">
+				<li><a href="">新闻</a></li>
+				<li><a href="">娱乐</a></li>
+				<li><a href="">体育</a></li>
+				<li><a href="">电影</a></li>
+				<li><a href="">音乐</a></li>
+				<li><a href="">旅游</a></li>
+			</ul>
+		</div>
+		<script>
+			window.onload = function() {
+			var skin = document.getElementById("skin").getElementsByTagName("li");
+			var skin_class = ["red", "green", "black"];
+			var bg = document.getElementsByTagName("body")[0];
+			var navline = document.getElementById("nav");
+			for (var i = 0; i < skin.length; i++) {
+				skin[i].index = i;
+				skin[i].onclick = function() {
+					bg.className = skin_class[this.index];
+					navline.style.backgroundColor = skin_class[this.index];
+					};
+				}
+			};
+		</script>
+	</body>
+</html>

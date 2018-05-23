@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>图片列表：鼠标移入/移出改变透明度</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul,li{
+			list-style: none;
+		}
+		#imgList{
+			width: 900px;
+			display: block;
+			margin: 0 auto;
+		}
+		#imgList li{
+			float: left;
+			margin: 5px;
+			border: 2px solid #1d1d1d;
+			padding: 3px;
+		}
+		#imgList li img{
+			width: 200px;
+			height: 200px;
+			cursor: pointer;
+			opacity: 0.5;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oLi = document.getElementById("imgList").getElementsByTagName("img");
+			for (var i in oLi){
+				oLi[i].onmouseover = function(){
+					this.style.opacity = 1;
+				};
+				oLi[i].onmouseout = function(){
+					this.style.opacity = 0.5;
+				}
+			}
+		};
+	</script>
+</head>
+<body>
+	<ul id="imgList">
+		<li><img src="img/1.jpg" alt="bangumi1"></li>
+		<li><img src="img/2.jpg" alt="bangumi2"></li>
+		<li><img src="img/3.jpg" alt="bangumi3"></li>
+		<li><img src="img/4.jpg" alt="bangumi4"></li>
+		<li><img src="img/5.jpg" alt="bangumi5"></li>
+		<li><img src="img/6.jpg" alt="bangumi6"></li>
+		<li><img src="img/7.jpg" alt="bangumi7"></li>
+		<li><img src="img/8.jpg" alt="bangumi8"></li>
+	</ul>
+</body>
+</html>

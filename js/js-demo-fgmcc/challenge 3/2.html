@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用parseInt解析数字，并求和</title>
+	<style>
+		body{font-size:16px;margin:0;padding:0;text-align:center;}
+	</style>
+</head>
+<script>
+	window.onload = function(){
+		var oInput = document.getElementsByTagName("input");
+		var oSum = document.getElementById("sumbtn");
+		var result = document.getElementById("result");
+		oSum.onclick = function(){
+			var res = 0;
+			for (var i = 0; i < 2; i++){
+				res += parseInt(oInput[i].value);
+			}
+			result.innerText = res;
+		};
+	}
+</script>
+<body>
+	<input type="text">
+	+
+	<input type="text">
+	=
+	<span id="result">?</span>
+	<input type="button" value="Sum" id="sumbtn">
+</body>
+</html>

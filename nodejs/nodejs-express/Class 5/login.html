@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>login</title>
+	<style>
+		body{
+			font-size: 18px;
+		}
+		input{
+			margin: 10px 5px;
+		}
+	</style>
+	<script src="./ajax.js"></script>
+</head>
+<body>
+	用户：<input type="text" id="user"><br>
+	密码：<input type="text" id="pass"><br>
+	<input type="button" value="注册" id="res">
+	<input type="button" value="登录" id="login"><br>
+	<script>
+
+			res.onclick = function(){
+				ajax({
+					url:'http://localhost:2133/res',
+					type:'get',
+					data:{
+						user:user.value,
+						pass:pass.value
+					},
+					success:function(data){
+						console.log(data);
+					}
+				});
+			};
+
+			login.onclick = function(){
+				ajax({
+					url:'http://localhost:2133/login',
+					type:'get',
+					data:{
+						user:user.value,
+						pass:pass.value
+					},
+					success:function(data){
+						console.log(data);
+					}
+				});
+			};
+
+	</script>
+</body>
+</html>

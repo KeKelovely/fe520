@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单一按钮显示/隐藏</title>
+</head>
+<style>
+	*{margin:0;padding:0;list-style:none;text-decoration:none;}
+	body{font-size:16px;}
+	#outer{width:300px;border:1px solid #aaa;margin:10px auto;}
+	#outer h2{cursor:pointer;color:#fff;font-size:18px;border:1px solid;line-height:30px;padding-left:10px;background:#ced3d7;border-color:#fff;}
+	#outer ul{border-top:1px solid #dee3e6;height:0px;overflow:hidden;transition:.5s;}
+	#outer li{height:25px;line-height:25px;}
+	#outer a{display:block;color:#6b7980;background:#e9edf2;font-size:12px;font-weight:normal;text-indent:2em;}
+	#outer a:hover{background:#fff;text-decoration:underline;}
+</style>
+<script>
+	window.onload = function(){
+		var oH2 = document.getElementById("play");
+		var oUl = document.getElementsByTagName("ul")[0];
+		oH2.onclick = function(){
+			oUl.style.height = oUl.style.height == "150px"?("0px"):("150px");
+			oH2.style.color = oH2.style.color == "white"?("black"):("white");
+		}
+	}
+</script>
+<body>
+	<div id="outer">
+		<h2 id='play'>播放列表...</h2>
+		<ul>
+			<li><a href="javascript:;">item 1</a></li>
+			<li><a href="javascript:;">item 2</a></li>
+			<li><a href="javascript:;">item 3</a></li>
+			<li><a href="javascript:;">item 4</a></li>
+			<li><a href="javascript:;">item 5</a></li>
+			<li><a href="javascript:;">item 6</a></li>
+		</ul>
+	</div>
+</body>
+</html>
