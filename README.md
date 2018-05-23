@@ -1,2 +1,5 @@
-# learnningRepository
-A Log&amp;Repository in my font-end learning :) just for fun! 
+# fe520
+
+### 萌新的前端学习日志/仓库
+
+
