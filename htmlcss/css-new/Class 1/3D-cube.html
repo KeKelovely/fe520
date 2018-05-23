@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>3D矩形-demo</title>
+</head>
+<style>
+	*{margin:0;padding:0;list-style:none;}
+	#div1{
+		width: 200px;height: 200px;background: rgba(0,0,0,0);
+		position: absolute;left: 50%;top: 50%;margin: -100px 0 0 -100px;
+		transform: perspective(800px) rotateX(-45deg) rotateY(45deg);
+		transform-style: preserve-3d;
+	}
+	#div1>div{
+		width: 100%;height: 100%;position: absolute;transition: 1s;
+	}
+	#div2{
+		transform: translateZ(100px);background: yellow;
+	}
+	#div3{
+		transform: translateZ(-100px);background: red;
+	}
+	#div4{
+		transform: rotateY(90deg) translateZ(-100px); background:green;
+	}
+	#div5{
+		transform: rotateY(-90deg) translateZ(-100px); background: pink;
+	}
+	#div6{
+		transform: rotateX(90deg) translateZ(-100px); background: blue;
+	}
+	#div7{
+		transform: rotateX(-90deg) translateZ(-100px); background: orange;
+	}
+</style>
+<body>
+	<div id="div1">
+		<div id="div2"></div>
+		<div id="div3"></div>
+		<div id="div4"></div>
+		<div id="div5"></div>
+		<div id="div6"></div>
+		<div id="div7"></div>
+	</div>
+	<script>
+		window.onload = function(){
+			var reg = 0;
+			var allDiv = div1.children;
+			setInterval(function(){
+				reg++;
+				div1.style.transform = 'perspective(800px) rotateX('+ reg*0.2 +'deg)' + 'rotateY('+reg*0.3+'deg)';
+			},0);
+			setInterval(function(){
+				for (var i in allDiv){
+					allDiv[i].style.background = 'rgb('+parseInt(Math.random()*256)+','+parseInt(Math.random()*256)+','+parseInt(Math.random()*256)+')';
+				}
+			},1000)
+		}
+	</script>
+</body>
+</html>
