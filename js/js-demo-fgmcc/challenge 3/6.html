@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>判断数字是否为两位数</title>
+	<style>
+		body{
+			font-size: 24px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" id="num">
+	<button id="btn">是否为两位数</button>
+	<script>
+		window.onload = function(){
+			var inputVal = document.getElementById("num");
+			var oBtn = document.getElementById("btn");
+			oBtn.onclick = function(){
+				//console.log(inputVal.value);
+				if(inputVal.value === ''){
+					alert("输入不能为空！");
+				}else if(isNaN(Number(inputVal.value))){
+					alert("请输入数字！")
+				}else {
+					var len = inputVal.value.length;
+					alert(`这是${len}位数`);
+				}
+			}
+		}
+	</script>
+</body>
+</html>
